@@ -29,6 +29,9 @@ public:
 
     int getFinalX();
     int getFinalY();
+
+    void printMove();
+
 };
 
 #endif //CHESS_AI_MOVE_H

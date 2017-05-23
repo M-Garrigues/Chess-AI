@@ -30,3 +30,10 @@ Move::Move(int dep, int fin, Piece &newpiece) {
 Move::Move() {
 
 }
+
+void Move::printMove() {
+
+    char p;
+
+    std::cout << (char)(init%8 + 96) << (init -1)/8 + 1 << "-" << (char)(final%8 + 96) << (final -1)/8 + 1 << std::endl;
+}
