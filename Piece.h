@@ -6,13 +6,13 @@
 #define CHESS_AI_PIECE_H
 
 #include <vector>
-#include "Move.h"
 #include "Board.h"
+#include "Move.h"
 
-class Move;
 class Board;
+class Move;
 
-enum Color{WHITE, BLACK};
+
 
 class Piece{
 
@@ -27,12 +27,13 @@ private:
 public:
 
     Piece();
+    ~Piece();
     Piece(Color newColor, unsigned char x, unsigned char y);
 
     virtual std::vector<int> getMoveCells(Board &board);
     virtual std::vector<int> getAttackCells(Board &board);
 
-    void genMoves(std::vector<int> &listCells);
+    void genMoves(Board & board);
 
     bool isPinned();
 
@@ -40,6 +41,11 @@ public:
     int getX();
     int getY();
     Color getColor();
+
+    void setColor(Color newColor);
+    void setX(unsigned char newX);
+    void setY(unsigned char newY);
+
     std::vector<Move> * getMoves();
 
 

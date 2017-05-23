@@ -13,6 +13,9 @@ class Pawn : public Piece{
 public:
     Pawn(Color color, int x, int y);
 
+    std::vector<int> getMoveCells(Board &board);
+
+    std::vector<int> getAttackCells(Board &board);
 };
 
 #endif //CHESS_AI_PAWN_H

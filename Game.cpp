@@ -21,55 +21,55 @@ Game::Game() {
 
     
     //adding white pieces
-    whitePieces.push_back(Knight(WHITE, 2, 1));
-    whitePieces.push_back(King(WHITE, 4, 1));
-    whitePieces.push_back(Bishop(WHITE, 6, 1));
-    whitePieces.push_back(Rook(WHITE, 8, 1));
+    whitePieces.push_back(new Knight(WHITE, 2, 1)); //0
+    whitePieces.push_back(new King(WHITE, 4, 1));   //1
+    whitePieces.push_back(new Bishop(WHITE, 6, 1)); //2
+    whitePieces.push_back(new Rook(WHITE, 8, 1));   //3
 
-    whitePieces.push_back(Pawn(WHITE, 1, 2));
-    whitePieces.push_back(Pawn(WHITE, 3, 2));
-    whitePieces.push_back(Pawn(WHITE, 5, 2));
-    whitePieces.push_back(Pawn(WHITE, 7, 2));
+    whitePieces.push_back(new Pawn(WHITE, 1, 2));   //4
+    whitePieces.push_back(new Pawn(WHITE, 3, 2));
+    whitePieces.push_back(new Pawn(WHITE, 5, 2));
+    whitePieces.push_back(new Pawn(WHITE, 7, 2));
 
-    whitePieces.push_back(Pawn(WHITE, 2, 3));
-    whitePieces.push_back(Pawn(WHITE, 4, 3));
-    whitePieces.push_back(Pawn(WHITE, 6, 3));
-    whitePieces.push_back(Pawn(WHITE, 8, 3));
+    whitePieces.push_back(new Pawn(WHITE, 2, 3));
+    whitePieces.push_back(new Pawn(WHITE, 4, 3));
+    whitePieces.push_back(new Pawn(WHITE, 6, 3));
+    whitePieces.push_back(new Pawn(WHITE, 8, 3));
     
     
     //adding black pieces
-    blackPieces.push_back(Knight(BLACK, 2, 8));
-    blackPieces.push_back(King(BLACK, 4, 8));
-    blackPieces.push_back(Bishop(BLACK, 6, 8));
-    blackPieces.push_back(Rook(BLACK, 8, 8));
+    blackPieces.push_back(new Knight(BLACK, 2, 8));
+    blackPieces.push_back(new King(BLACK, 4, 8));
+    blackPieces.push_back(new Bishop(BLACK, 6, 8));
+    blackPieces.push_back(new Rook(BLACK, 8, 8));
 
-    blackPieces.push_back(Pawn(BLACK, 1, 7));
-    blackPieces.push_back(Pawn(BLACK, 3, 7));
-    blackPieces.push_back(Pawn(BLACK, 5, 7));
-    blackPieces.push_back(Pawn(BLACK, 7, 7));
+    blackPieces.push_back(new Pawn(BLACK, 1, 7));
+    blackPieces.push_back(new Pawn(BLACK, 3, 7));
+    blackPieces.push_back(new Pawn(BLACK, 5, 7));
+    blackPieces.push_back(new Pawn(BLACK, 7, 7));
 
-    blackPieces.push_back(Pawn(BLACK, 2, 6));
-    blackPieces.push_back(Pawn(BLACK, 4, 6));
-    blackPieces.push_back(Pawn(BLACK, 6, 6));
-    blackPieces.push_back(Pawn(BLACK, 8, 6));
+    blackPieces.push_back(new Pawn(BLACK, 2, 6));
+    blackPieces.push_back(new Pawn(BLACK, 4, 6));
+    blackPieces.push_back(new Pawn(BLACK, 6, 6));
+    blackPieces.push_back(new Pawn(BLACK, 8, 6));
 
 
-    std::vector<Piece> allPieces = whitePieces;
+    std::vector<Piece *> allPieces = whitePieces;
 
     allPieces.insert( allPieces.end(), blackPieces.begin(), blackPieces.end() );
 
     board = Board(allPieces);
 }
 
-Board Game::getBoard() {
-    return board;
+Board * Game::getBoard() {
+    return &board;
 }
 
-std::vector<Piece> *Game::getWhitePieces() {
+std::vector<Piece*> *Game::getWhitePieces() {
     return &whitePieces;
 }
 
-std::vector<Piece> *Game::getBlackPieces() {
+std::vector<Piece*> *Game::getBlackPieces() {
     return &blackPieces;
 }
 

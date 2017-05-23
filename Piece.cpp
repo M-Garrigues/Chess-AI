@@ -4,6 +4,7 @@
 
 #include "Piece.h"
 
+
 Piece::Piece(){
 
 }
@@ -31,19 +32,49 @@ bool Piece::isPinned() {
     return pinned;
 }
 
-void Piece::genMoves(std::vector<int> &listCells) {
+void Piece::genMoves(Board &board) {
 
     std::vector<Move> * listMoves = getMoves();
 
+    //std::cout << "\nCECI EST UN TEST \n";
     listMoves->clear(); //we reset the previously calculated moves
 
-    int posInit = getX() + getY()*8;
+    int posInit = getX() + (getY()-1)*8;
+    //std::cout << "\nCECI EST UN aoizdhazodha\n";
+    for(auto posFinal : this->getMoveCells(board)){
 
-    for(auto posFinal : listCells){
-        listMoves->push_back(Move(posInit, posFinal, *this));
+
+       // std::cout << "\nBONJOUR : " << posFinal << " \n";
+        Move temp = Move(posInit, posFinal, this);
+        listMoves->push_back(temp);
     }
 }
 
 std::vector<Move> * Piece::getMoves() {
     return &listMoves;
+}
+
+Piece::~Piece() {
+    x = 0;
+    y = 0;
+}
+
+std::vector<int> Piece::getMoveCells(Board &board) {
+    return std::vector<int>();
+}
+
+std::vector<int> Piece::getAttackCells(Board &board) {
+    return std::vector<int>();
+}
+
+void Piece::setColor(Color newColor) {
+    this->color = newColor;
+}
+
+void Piece::setX(unsigned char newX) {
+    this->x = newX;
+}
+
+void Piece::setY(unsigned char newY) {
+    this->y = newY;
 }

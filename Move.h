@@ -5,6 +5,8 @@
 #ifndef CHESS_AI_MOVE_H
 #define CHESS_AI_MOVE_H
 
+enum Color{WHITE, BLACK};
+
 
 #include "Piece.h"
 
@@ -22,7 +24,7 @@ private:
 public:
 
     Move();
-    Move(int dep, int fin, Piece &piece);
+    Move(int dep, int fin, Piece * piece);
 
     int getInitX();
     int getInitY();

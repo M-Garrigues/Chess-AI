@@ -7,12 +7,15 @@
 
 
 #include "Move.h"
-#include "Piece.h"
 #include "stdio.h"
 #include <iostream>
 
+
+
 class Piece;
 class Move;
+
+
 
 enum pieces{
     LIMIT = 100, EMPTY = 0,
@@ -26,11 +29,11 @@ class Board{
 
 
 private:
-    char board [10][10];
+    int board [10][10];
 
-    char whiteThreatBoard [10][10]{};
+    int whiteThreatBoard [10][10]{};
 
-    char blackThreatBoard [10][10]{};
+    int blackThreatBoard [10][10]{};
 
     Piece * pieces[10][10]{};
 
@@ -46,7 +49,7 @@ public:
 
     Board();
     Board(Board &board);
-    Board(std::vector<Piece> & tabPieces);
+    Board(std::vector<Piece*> & tabPieces);
 
     void update(Move & move);
 
@@ -71,7 +74,7 @@ public:
 
     Piece * getPiece(int i);
 
-    typedef char (*ptr_to_arrays)[10]; //typedefs can make things more readable with such awkward types
+    typedef int (*ptr_to_arrays)[10]; //typedefs can make things more readable with such awkward types
 
     ptr_to_arrays getBoard();
 

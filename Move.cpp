@@ -2,10 +2,11 @@
 // Created by Mathieu on 22/05/2017.
 //
 
+#include <iostream>
 #include "Move.h"
 
 int Move::getInitX() {
-    return init%8;
+    return (init - 1)%8 + 1;
 }
 
 int Move::getInitY() {
@@ -13,18 +14,18 @@ int Move::getInitY() {
 }
 
 int Move::getFinalX() {
-    return final%8;
+    return (final - 1)%8 + 1;
 }
 
 int Move::getFinalY() {
     return (int)(final - 1)/8 + 1;
 }
 
-Move::Move(int dep, int fin, Piece &newpiece) {
+Move::Move(int dep, int fin, Piece * newpiece) {
 
     init = dep;
     final = fin;
-    movedPiece = &newpiece;
+    movedPiece = newpiece;
 }
 
 Move::Move() {
@@ -33,7 +34,9 @@ Move::Move() {
 
 void Move::printMove() {
 
-    char p;
+    char p =(char)(((init - 1)%8 +1) +96);
 
-    std::cout << (char)(init%8 + 96) << (init -1)/8 + 1 << "-" << (char)(final%8 + 96) << (final -1)/8 + 1 << std::endl;
+    char f =(char)(((final - 1)%8 + 1) + 96);
+
+    std::cout << p << (init -1)/8 + 1<< "-" << f << (final -1)/8 +1<< std::endl;
 }

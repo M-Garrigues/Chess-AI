@@ -6,8 +6,6 @@
 #define CHESS_AI_GAME_H
 
 
-#include "Piece.h"
-#include "Move.h"
 #include "Board.h"
 
 class Piece;
@@ -27,15 +25,15 @@ private:
     bool check = false;
 
     Board board;
-    std::vector<Piece> whitePieces;
-    std::vector<Piece> blackPieces;
+    std::vector<Piece *> whitePieces;
+    std::vector<Piece *> blackPieces;
 
 public:
     Game();
 
-    Board getBoard();
-    std::vector<Piece> * getWhitePieces();
-    std::vector<Piece> * getBlackPieces();
+    Board * getBoard();
+    std::vector<Piece*> * getWhitePieces();
+    std::vector<Piece*> * getBlackPieces();
 
     void play(Move move);
 

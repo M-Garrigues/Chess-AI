@@ -4,8 +4,10 @@
 
 #include "Bishop.h"
 
-Bishop::Bishop(Color color, int x, int y) : Piece(color, x, y){
-
+Bishop::Bishop(Color newColor, int x, int y){
+    setColor(newColor);
+    setX(x);
+    setY(y);
 }
 
 std::vector<int> Bishop::getMoveCells(Board &board) {
@@ -13,6 +15,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
     std::vector<int> cells;
 
     if(isPinned()){
+
         int posToKing = board.posToKing(getColor(), getX(), getY());
         if( posToKing < 5) return cells; //the piece is on the king line
         else{
@@ -28,14 +31,14 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
                 do{
                     if(x!= i && y!=j){
-                        cells.push_back(i + 8*j);
+                        cells.push_back(i+8*(j-1));
                     }
                     i++;j--;
-                }while(bd[i][j] == 0); //2nd diagonal
+                }while(bd[i][j] == 0 || (x== i && y==j)); //2nd diagonal
 
                 if(bd[i][j] > -10 && bd[i][j] < 10){
-                    if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-                        cells.push_back(i +8j);
+                    if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+                        cells.push_back(i+8*(j-1));
                     }
                 }
 
@@ -43,14 +46,14 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
                 do{
                     if(x!= i && y!=j){
-                        cells.push_back(i + 8*j);
+                        cells.push_back(i+8*(j-1));
                     }
                     i--;j++;
-                }while(bd[i][j] == 0); //4th diagonal
+                }while(bd[i][j] == 0 || (x== i && y==j)); //4th diagonal
 
                 if(bd[i][j] > -10 && bd[i][j] < 10){
-                    if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-                        cells.push_back(i +8j);
+                    if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+                        cells.push_back(i+8*(j-1));
                     }
                 }
             } else{ //1st and 3rd diag
@@ -60,14 +63,14 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
                 do{
                     if(x!= i && y!=j){
-                        cells.push_back(i + 8*j);
+                        cells.push_back(i+8*(j-1));
                     }
                     i++;j++;
-                }while(bd[i][j] == 0); //1st diagonal
+                }while(bd[i][j] == 0 || (x== i && y==j)); //1st diagonal
 
                 if(bd[i][j] > -10 && bd[i][j] < 10){
-                    if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-                        cells.push_back(i +8j);
+                    if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+                        cells.push_back(i+8*(j-1));
                     }
                 }
 
@@ -75,14 +78,14 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
                 do{
                     if(x!= i && y!=j){
-                        cells.push_back(i + 8*j);
+                        cells.push_back(i+8*(j-1));
                     }
                     i--;j--;
-                }while(bd[i][j] == 0); //3rd diagonal
+                }while(bd[i][j] == 0 || (x== i && y==j)); //3rd diagonal
 
                 if(bd[i][j] > -10 && bd[i][j] < 10){
-                    if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-                        cells.push_back(i +8j);
+                    if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+                        cells.push_back(i+8*(j-1));
                     }
                 }
             }
@@ -92,6 +95,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
         }
     }
 
+
     int x = getX();
     int y = getY();
     auto bd = board.getBoard();
@@ -100,30 +104,33 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
     do{
         if(x!= i && y!=j){
-            cells.push_back(i + 8*j);
+            cells.push_back(i+8*(j-1));
         }
         i++;j++;
-    }while(bd[i][j] == 0); //1st diagonal
+    }while(bd[i][j] == 0 || (x== i && y==j)); //1st diagonal
+
+
 
     if(bd[i][j] > -10 && bd[i][j] < 10){
-        if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-           cells.push_back(i +8j);
+        if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+           cells.push_back(i+8*(j-1));
         }
     }
+
 
     i=x; j = y;
 
 
     do{
         if(x!= i && y!=j){
-            cells.push_back(i + 8*j);
+            cells.push_back(i+8*(j-1));
         }
         i++;j--;
-    }while(bd[i][j] == 0); //2nd diagonal
+    }while(bd[i][j] == 0 || (x== i && y==j)); //2nd diagonal
 
     if(bd[i][j] > -10 && bd[i][j] < 10){
-        if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-            cells.push_back(i +8j);
+        if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+            cells.push_back(i+8*(j-1));
         }
     }
 
@@ -132,14 +139,16 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
     do{
         if(x!= i && y!=j){
-            cells.push_back(i + 8*j);
+            cells.push_back(i+8*(j-1));
         }
         i--;j++;
-    }while(bd[i][j] == 0); //4th diagonal
+
+    }while(bd[i][j] == 0 || (x== i && y==j)); //4th diagonal
 
     if(bd[i][j] > -10 && bd[i][j] < 10){
-        if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-            cells.push_back(i +8j);
+
+        if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+            cells.push_back(i+8*(j-1));
         }
     }
 
@@ -148,22 +157,20 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
     do{
         if(x!= i && y!=j){
-            cells.push_back(i + 8*j);
+            cells.push_back(i+8*(j-1));
         }
         i--;j--;
-    }while(bd[i][j] == 0); //3rd diagonal
+    }while(bd[i][j] == 0 || (x== i && y==j)); //3rd diagonal
 
     if(bd[i][j] > -10 && bd[i][j] < 10){
-        if(!board.getPiece(i + 8j)->getColor() == getColor()){ //it can go on cell occupied
-            cells.push_back(i +8j); //if it's the opposite color, it can go on it (and capture);
+        if(!board.getPiece(i+8*(j-1))->getColor() == getColor()){ //it can go on cell occupied
+            cells.push_back(i+8*(j-1)); //if it's the opposite color, it can go on it (and capture);
         }
     }
-
     return cells;
 }
 
 std::vector<int> Bishop::getAttackCells(Board &board) {
-    return Piece::getMoveCells(board);
+    return Bishop::getMoveCells(board);
 }
-
 
