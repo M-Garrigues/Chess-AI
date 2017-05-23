@@ -3,3 +3,7 @@
 //
 
 #include "Rook.h"
+
+Rook::Rook(Color color, int x, int y) : Piece(color, x, y){
+
+}

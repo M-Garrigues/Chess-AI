@@ -3,3 +3,7 @@
 //
 
 #include "Queen.h"
+
+Queen::Queen(Color color, int x, int y) : Piece(color, x, y){
+
+}

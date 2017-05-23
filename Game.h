@@ -10,6 +10,12 @@
 #include "Move.h"
 #include "Board.h"
 
+class Piece;
+class Move;
+class Board;
+
+
+
 class Game{
 
 private:
@@ -18,9 +24,20 @@ private:
     std::vector<Move> movesList;
     signed char castling;
     signed char halfMoves;
+    bool check = false;
 
     Board board;
-    std::vector<Piece> pieces;
+    std::vector<Piece> whitePieces;
+    std::vector<Piece> blackPieces;
+
+public:
+    Game();
+
+    Board getBoard();
+    std::vector<Piece> * getWhitePieces();
+    std::vector<Piece> * getBlackPieces();
+
+    void play(Move move);
 
 };
 

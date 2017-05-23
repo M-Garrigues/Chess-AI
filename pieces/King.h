@@ -9,6 +9,12 @@
 
 class King : public Piece{
 
+public:
+    King(Color color, int x, int y);
+
+    std::vector<int> getMoveCells(Board &board);
+
+    std::vector<int> getAttackCells(Board &board);
 };
 
 #endif //CHESS_AI_KING_H

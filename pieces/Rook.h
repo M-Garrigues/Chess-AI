@@ -9,6 +9,10 @@
 
 class Rook : public Piece{
 
+
+public:
+    Rook(Color color, int x, int y);
+
 };
 
 

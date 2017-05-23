@@ -8,17 +8,27 @@
 
 #include "Piece.h"
 
+class Piece;
+
 class Move{
 
 private:
     int init;
     int final;
-    Piece movedPiece;
+    Piece * movedPiece;
     int idPieceTaken = -1;
 
 
 public:
-    void play();
+
+    Move();
+    Move(int dep, int fin, Piece &piece);
+
+    int getInitX();
+    int getInitY();
+
+    int getFinalX();
+    int getFinalY();
 };
 
 #endif //CHESS_AI_MOVE_H

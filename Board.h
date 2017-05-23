@@ -7,6 +7,12 @@
 
 
 #include "Move.h"
+#include "Piece.h"
+#include "stdio.h"
+#include <iostream>
+
+class Piece;
+class Move;
 
 enum pieces{
     LIMIT = 100, EMPTY = 0,
@@ -18,6 +24,7 @@ enum pieces{
 
 class Board{
 
+
 private:
     char board [10][10];
 
@@ -28,6 +35,8 @@ private:
     Piece * pieces[10][10]{};
 
 
+    int xBK, yBK, xWK, yWK; //kings positions
+
     void updatePins();
 
     void updateThreats();
@@ -36,14 +45,39 @@ private:
 public:
 
     Board();
-    Board(Board board);
-    Board::Board(std::vector<Piece> & tabPieces);
+    Board(Board &board);
+    Board(std::vector<Piece> & tabPieces);
 
     void update(Move & move);
 
     bool check();
 
     bool mate();
+
+
+
+    //board.updatePins(move);
+
+    //board.updateThreats(move);
+
+    //check = board.testCheck();
+
+    void move(Move &move);
+
+
+    void printBoard();
+
+    void display();
+
+    Piece * getPiece(int i);
+
+    typedef char (*ptr_to_arrays)[10]; //typedefs can make things more readable with such awkward types
+
+    ptr_to_arrays getBoard();
+
+    ptr_to_arrays getThreats(Color color);
+
+    int posToKing(Color color, int x, int y);
 };
 
 #endif //CHESS_AI_BOARD_H

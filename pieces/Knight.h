@@ -10,6 +10,9 @@
 
 class Knight : public Piece{
 
+public:
+    Knight();
+    Knight(Color color, int x, int y);
 };
 
 #endif //CHESS_AI_KNIGHT_H
