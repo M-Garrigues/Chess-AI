@@ -19,7 +19,10 @@ class Game{
 private:
     int turn;
     Color activeColor;
-    std::vector<Move> movesList;
+    std::vector<Move> movesListWhite;
+    std::vector<Move> movesListBlack;
+
+
     signed char castling;
     signed char halfMoves;
     bool check = false;
@@ -31,12 +34,16 @@ private:
 public:
     Game();
 
+    void generateAllMoves(Color color);
+
     Board * getBoard();
     std::vector<Piece*> * getWhitePieces();
     std::vector<Piece*> * getBlackPieces();
 
+
     void play(Move move);
 
+    std::vector<Move> *getMoves(Color param);
 };
 
 #endif //CHESS_AI_GAME_H

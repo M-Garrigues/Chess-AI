@@ -103,3 +103,36 @@ void Game::play(Move move) {
 
     //COUNT HALFMOVES;
 }
+
+void Game::generateAllMoves(Color color) {
+    if(color == WHITE){
+
+        movesListWhite.clear();
+
+        for(auto piece : whitePieces){
+            piece->genMoves(board);
+            std::vector<Move> * temp = piece->getMoves();
+            movesListWhite.insert(movesListWhite.end(), temp->begin(), temp->end());
+        }
+    }
+    else{
+        movesListBlack.clear();
+
+        for(auto piece : blackPieces){
+            piece->genMoves(board);
+            std::vector<Move> * temp = piece->getMoves();
+            movesListBlack.insert(movesListBlack.end(), temp->begin(), temp->end());
+        }
+    }
+
+
+}
+
+std::vector<Move> *Game::getMoves(Color color) {
+
+if(color == WHITE){
+    return &movesListWhite;
+}
+    else
+    return &movesListBlack;
+}
