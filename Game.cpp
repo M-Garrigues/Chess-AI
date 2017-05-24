@@ -58,6 +58,8 @@ Game::Game() {
 
     allPieces.insert( allPieces.end(), blackPieces.begin(), blackPieces.end() );
 
+    std::cout << "\n\nCapacity = " << allPieces.capacity()<< "\n\n";
+
     board = Board(allPieces);
 }
 

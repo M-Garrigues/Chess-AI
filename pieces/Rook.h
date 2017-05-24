@@ -13,6 +13,9 @@ class Rook : public Piece{
 public:
     Rook(Color color, int x, int y);
 
+    std::vector<int> getMoveCells(Board &board);
+
+    std::vector<int> getAttackCells(Board &board);
 };
 
 

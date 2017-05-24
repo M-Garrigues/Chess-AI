@@ -61,6 +61,8 @@ Board::Board(std::vector<Piece *> & tabPieces){
 
 
 
+std::cout << tabPieces[0];
+
 
     pieces[2][1] = tabPieces[0]; pieces[4][1] = tabPieces[1]; pieces[6][1] = tabPieces[2]; pieces[8][1] = tabPieces[3];
     pieces[1][2] = tabPieces[4]; pieces[3][2] = tabPieces[5]; pieces[5][2] = tabPieces[6]; pieces[7][2] = tabPieces[7];
@@ -294,10 +296,13 @@ void Board::move(Move &move) {
     board[xF][yF] = board[xI][yI];
     board[xI][yI] = 0;
 
+
+    pieces[xF][yF]->setX(xF);
+    pieces[xF][yF]->setY(yF);
 }
 
 Piece * Board::getPiece(int i) {
-    return pieces[i%8][(i-1)/8 + 1];
+    return pieces[(i - 1)%8 + 1][(i-1)/8 + 1];
 }
 
 

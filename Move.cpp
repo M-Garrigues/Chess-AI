@@ -40,3 +40,7 @@ void Move::printMove() {
 
     std::cout << p << (init -1)/8 + 1<< "-" << f << (final -1)/8 +1<< std::endl;
 }
+
+Piece *Move::getMovedPiece() {
+    return movedPiece;
+}

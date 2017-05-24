@@ -32,6 +32,8 @@ public:
     int getFinalX();
     int getFinalY();
 
+    Piece * getMovedPiece();
+
     void printMove();
 
 };

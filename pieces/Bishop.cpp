@@ -30,7 +30,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
 
                 do{
-                    if(x!= i && y!=j){
+                    if(x!= i || y!=j){
                         cells.push_back(i+8*(j-1));
                     }
                     i++;j--;
@@ -45,7 +45,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
                 i=x; j = y;
 
                 do{
-                    if(x!= i && y!=j){
+                    if(x!= i || y!=j){
                         cells.push_back(i+8*(j-1));
                     }
                     i--;j++;
@@ -62,7 +62,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
 
                 do{
-                    if(x!= i && y!=j){
+                    if(x!= i || y!=j){
                         cells.push_back(i+8*(j-1));
                     }
                     i++;j++;
@@ -77,7 +77,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
                 i=x; j = y;
 
                 do{
-                    if(x!= i && y!=j){
+                    if(x!= i || y!=j){
                         cells.push_back(i+8*(j-1));
                     }
                     i--;j--;
@@ -103,7 +103,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
     int i=x; int j = y;
 
     do{
-        if(x!= i && y!=j){
+        if(x!= i || y!=j){
             cells.push_back(i+8*(j-1));
         }
         i++;j++;
@@ -122,7 +122,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
 
     do{
-        if(x!= i && y!=j){
+        if(x!= i || y!=j){
             cells.push_back(i+8*(j-1));
         }
         i++;j--;
@@ -138,7 +138,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
 
     do{
-        if(x!= i && y!=j){
+        if(x!= i || y!=j){
             cells.push_back(i+8*(j-1));
         }
         i--;j++;
@@ -156,7 +156,7 @@ std::vector<int> Bishop::getMoveCells(Board &board) {
 
 
     do{
-        if(x!= i && y!=j){
+        if(x!= i || y!=j){
             cells.push_back(i+8*(j-1));
         }
         i--;j--;
