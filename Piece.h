@@ -48,6 +48,9 @@ public:
 
     std::vector<Move> * getMoves();
 
+    bool isRook();
+    bool isBishop();
+
 
 };
 #endif //CHESS_AI_PIECE_H

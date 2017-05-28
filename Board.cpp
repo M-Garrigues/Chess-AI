@@ -12,8 +12,8 @@ Board::Board(std::vector<Piece *> & tabPieces){
     for(int i = 0; i < 10; i++){
         board[i][0] = LIMIT;
         board[0][i] = LIMIT;
-        board[i][10] = LIMIT;
-        board[10][i] = LIMIT;
+        board[i][9] = LIMIT;
+        board[9][i] = LIMIT;
     }
 
     for(int i = 1; i < 9; i++){
@@ -320,17 +320,17 @@ Board::ptr_to_arrays Board::getThreats(Color color) {
 
 int Board::posToKing(Color color, int x, int y) {
 
-    if(color == WHITE){
+    if(color == BLACK){
         assert(x != xWK && y != yWK);
 
         if(x == xWK && y > yWK) return 1;
         if(x > xWK && y == yWK) return 2;
         if(x == xWK && y < yWK) return 3;
         if(x < xWK && y == yWK) return 4;
-        if(x < xWK && y > yWK) return 5;
-        if(x > xWK && y > yWK) return 6;
-        if(x > xWK && y < yWK) return 7;
-        if(x < xWK && y < yWK) return 8;
+        if(x < xWK && y > yWK && x - xWK == yWK - y) return 5;
+        if(x > xWK && y > yWK && x - xWK == y - yWK) return 6;
+        if(x > xWK && y < yWK && x - xWK == yWK - y) return 7;
+        if(x < xWK && y < yWK && x - xWK == y - yWK) return 8;
     }
     else{
         assert(x != xBK && y != yBK);
@@ -339,9 +339,41 @@ int Board::posToKing(Color color, int x, int y) {
         if(x > xBK && y == yBK) return 2;
         if(x == xBK && y < yBK) return 3;
         if(x < xBK && y == yBK) return 4;
-        if(x < xBK && y > yBK) return 5;
-        if(x > xBK && y > yBK) return 6;
-        if(x > xBK && y < yBK) return 7;
-        if(x < xBK && y < yBK) return 8;
+        if(x < xBK && y > yBK && xBK - x == y - yBK) return 5;
+        if(x > xBK && y > yBK && x - xBK == y - yBK) return 6;
+        if(x > xBK && y < yBK && x - xBK == yBK - y) return 7;
+        if(x < xBK && y < yBK && x - xBK == y - yBK) return 8;
     }
+
+    return 0;
+}
+
+void Board::updatePins(Move move) {
+    updatePinsInit(move);
+    updatePinsFinal();
+
+}
+
+void Board::updatePinsInit(Move move) { //WOULD NEED AN UPDATE TO BE EFFECTIVE FOR CLASSIC CHESS
+
+    int cX = move.getInitX();
+    int cY = move.getInitY();
+
+    Piece * piece = move.getMovedPiece();
+
+    int posKing = posToKing(piece->getColor(), cX, cY);
+
+    if( posKing != 0){
+
+        if(posKing < 5 && piece->isRook()){
+            if()
+        }
+        else if(posKing > 4 && piece->isBishop()){
+
+        }
+    }
+
+
+
+
 }

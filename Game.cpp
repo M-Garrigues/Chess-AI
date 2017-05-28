@@ -80,7 +80,7 @@ std::vector<Piece*> *Game::getBlackPieces() {
 
 void Game::play(Move move) {
 
-    //board.updatePins(move);
+    board.updatePins(move);
 
     //board.updateThreats(move);
 

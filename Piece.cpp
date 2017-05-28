@@ -3,7 +3,7 @@
 //
 
 #include "Piece.h"
-
+#include <typeinfo>
 
 Piece::Piece(){
 
@@ -77,4 +77,17 @@ void Piece::setX(unsigned char newX) {
 
 void Piece::setY(unsigned char newY) {
     this->y = newY;
+}
+
+bool Piece::isRook() {
+
+    std::cout << typeid(this).name() << std::endl;
+
+    return typeid(this).name() == "4Rook";
+}
+
+bool Piece::isBishop(){
+    std::cout << typeid(this).name() << std::endl;
+
+    return typeid(this).name() == "5Bishop";
 }

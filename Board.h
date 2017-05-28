@@ -40,8 +40,6 @@ private:
 
     int xBK, yBK, xWK, yWK; //kings positions
 
-    void updatePins();
-
     void updateThreats();
 
 
@@ -81,6 +79,10 @@ public:
     ptr_to_arrays getThreats(Color color);
 
     int posToKing(Color color, int x, int y);
+
+    void updatePins(Move move);
+
+    void updatePinsInit(Move move);
 };
 
 #endif //CHESS_AI_BOARD_H
